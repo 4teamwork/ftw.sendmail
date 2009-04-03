@@ -1,0 +1,17 @@
+README.txt
+setup.cfg
+setup.py
+ftw/__init__.py
+ftw.sendmail.egg-info/PKG-INFO
+ftw.sendmail.egg-info/SOURCES.txt
+ftw.sendmail.egg-info/dependency_links.txt
+ftw.sendmail.egg-info/entry_points.txt
+ftw.sendmail.egg-info/namespace_packages.txt
+ftw.sendmail.egg-info/not-zip-safe
+ftw.sendmail.egg-info/paster_plugins.txt
+ftw.sendmail.egg-info/requires.txt
+ftw.sendmail.egg-info/top_level.txt
+ftw/sendmail/__init__.py
+ftw/sendmail/composer.py
+ftw/sendmail/interfaces.py
+ftw/sendmail/tests.py

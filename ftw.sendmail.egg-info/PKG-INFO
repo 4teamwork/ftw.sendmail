@@ -1,0 +1,26 @@
+Metadata-Version: 1.0
+Name: ftw.sendmail
+Version: 0.1dev
+Summary: UNKNOWN
+Home-page: www.4teamwork.ch
+Author: Victor BAUMANN
+Author-email: info@4teamwork.ch
+License: ©2009 4teamwork
+Description: Introduction
+        ============
+        
+        
+        
+        Changelog
+        =========
+        
+        0.1 - Unreleased
+        ----------------
+        
+        * Initial release
+        
+        
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

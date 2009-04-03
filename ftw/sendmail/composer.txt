@@ -1,0 +1,49 @@
+HTMLComposer
+------------
+
+The ``HTMLComposer`` creates messages of type ``email.Message.Message``. 
+
+  >>> from ftw.sendmail.composer import HTMLComposer
+  >>> composer = HTMLComposer('Message Body', 'Subject', 
+  ...                         [('Victor Bäümänn','v.baumann@4teamwork.ch'),
+  ...                         ('Mathias Leimgruber','m.leimgruber@4teamwork.ch')])
+
+Addresses will be decoded and formated for sending:
+
+  >>> composer._to_addresses
+  '=?utf-8?b?VmljdG9yIELDpMO8bcOkbm4=?= <v.baumann@4teamwork.ch>, Mathias Leimgruber <m.leimgruber@4teamwork.ch>'
+
+If no from_address is passed HTMLComposer uses the Address from the site_properties:
+
+  >>> composer._from_address
+  'Site Administrator <>'
+
+Check if converting to html and overriding of variables works:
+
+  >>> html = composer.html()
+  >>> '<div id="message">Message Body</div>' in html
+  True
+  >>> '<title>Subject</title>' in html
+  True
+  >>> html = composer.html(override_vars={'stylesheet':'#message{color: green;} div {border:1px solid red;}'})
+  >>> '<div id="message" style="color: green; border: 1px solid red">Message Body</div>' in html
+  True 
+
+create the message object:
+
+  >>> composer.render()
+  <email.MIMEMultipart.MIMEMultipart instance ...>
+
+IMailer
+-------
+
+The ``composer`` module defines an ``IMailer`` utility that's used to
+send out mails.  Let's make sure that it's registered properly, and
+that it has the right settings:	
+
+  >>> from zope import component
+  >>> from zope.sendmail.interfaces import IMailer
+  >>> smtp = component.getUtility(IMailer, 'plone.smtp')
+  >>> cfg = smtp._fetch_settings()
+  >>> cfg['username'], cfg['password'], cfg['hostname'], cfg['port']
+  (None, None, 'localhost', 25)

@@ -1,0 +1,30 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:mail="http://namespaces.zope.org/mail"
+   i18n_domain="ftw.sendmail">
+
+  <!-- ``zope.sendmail`` is a dependency for sending mail -->
+  <include package="zope.sendmail" file="meta.zcml" />
+  <include package="zope.sendmail" />
+
+  <utility name="plone.smtp" factory=".composer.SMTPMailer" />
+
+  <mail:smtpMailer name="smtp" hostname="localhost" port="25" />
+
+  <mail:queuedDelivery
+      name=""
+      queuePath="./queue"
+      mailer="plone.smtp"
+      permission="zope.SendMail"
+      />
+  
+  <!--  
+      You can use the following mailer instead of the default one to
+      log instead of really sending out mail.  Use this for debugging:
+
+  <utility name="plone.smtp" factory=".composer.StubSMTPMailer" />
+  -->
+
+
+</configure>
+
