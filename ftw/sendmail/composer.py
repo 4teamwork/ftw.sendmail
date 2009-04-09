@@ -19,6 +19,8 @@ import Products.CMFPlone.interfaces
 
 from plone.memoize import volatile
 
+from interfaces import IEMailComposer
+
 _ = lambda x: x
 
 def _render_cachekey(method, self, vars):
@@ -86,7 +88,7 @@ class HTMLComposer(persistent.Persistent):
     #   True
     # """
 
-    #XXX: interface.implements(IHTMLComposer)
+    interface.implements(IEMailComposer)
 
     title = _(u'HTML E-Mail')
 
@@ -207,9 +209,6 @@ class SMTPMailer(zope.sendmail.mailer.SMTPMailer):
     """A mailer for use with zope.sendmail that fetches settings from
     the Plone site's configuration.
     """
-    def __init__(self, hostname='localhost', port=25,
-                 username=None, password=None):
-        super(SMTPMailer, self).__init__(hostname, port, username, password)
 
     def _fetch_settings(self):
         root = component.getUtility(Products.CMFPlone.interfaces.IPloneSiteRoot)
