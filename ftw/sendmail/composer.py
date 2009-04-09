@@ -170,12 +170,12 @@ class HTMLComposer(persistent.Persistent):
         return vars    
 
 
-    @volatile.cache(_render_cachekey)
-    def _html(self, vars):
+    #@volatile.cache(_render_cachekey)
+    def _html(self, vars, **kwargs):
         html = self.template(**vars)
-        return stoneagehtml.compactify(html).decode('utf-8')
+        return stoneagehtml.compactify(html, **kwargs).decode('utf-8')
 
-    def html(self, override_vars=None, template_vars={}):
+    def html(self, override_vars=None, template_vars={}, **kwargs):
 
         vars = self._vars()
 
@@ -183,11 +183,11 @@ class HTMLComposer(persistent.Persistent):
             override_vars = {}
         vars.update(override_vars)
 
-        html = self._html(vars)
+        html = self._html(vars, **kwargs)
         html = string.Template(html).safe_substitute(template_vars)
         return html
 
-    def render(self, override_vars=None, template_vars={}):
+    def render(self, override_vars=None, template_vars={}, **kwargs):
 	
         vars = self._vars()
 
@@ -197,7 +197,7 @@ class HTMLComposer(persistent.Persistent):
 
         message = create_html_mail(
             vars['subject'],
-            self.html(override_vars=override_vars,template_vars=template_vars),
+            self.html(override_vars=override_vars,template_vars=template_vars,**kwargs),
             from_addr=vars['from_addr'],
             to_addr=vars['to_addr'],
             headers=vars.get('more_headers'),
