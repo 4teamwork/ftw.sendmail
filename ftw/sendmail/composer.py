@@ -222,7 +222,7 @@ class SMTPMailer(zope.sendmail.mailer.SMTPMailer):
         self.__dict__.update(self._fetch_settings())
 
     def send(self, fromaddr, toaddrs, message):
-        return super(SMTPMailer, self).send(fromaddr, toaddrs, message)
+        return super(SMTPMailer, self).send(fromaddr, self._split(toaddrs), message)
 
     @staticmethod
     def _split(value):
