@@ -92,15 +92,15 @@ class HTMLComposer(persistent.Persistent):
 
     title = _(u'HTML E-Mail')
 
-    def __init__(self, message, subject, to_addresses, from_name=u'', from_address='', stylesheet=''):
+    def __init__(self, message, subject, to_addresses, from_name=u'', from_address='', stylesheet='', replyto_address=''):
         properties = component.getUtility(
             Products.CMFCore.interfaces.IPropertiesTool)
         self.encoding = properties.site_properties.getProperty('default_charset', 'utf-8')
         self.stylesheet = stylesheet
         self.from_name = from_name or properties.email_from_name
         self.from_address = from_address or properties.email_from_address
-        self.to_addresses = to_addresses
-        self.replyto_address = u""
+        self.to_addresses = to_addresses and to_addresses or None
+        self.replyto_address = replyto_address
         self.subject = subject
         self.message = message
         self.header_text = u""
@@ -133,6 +133,11 @@ class HTMLComposer(persistent.Persistent):
         for name, mail in self.to_addresses:
             addresses.append(self._prepare_address(name, mail, self.encoding))
         return ', '.join(addresses)
+        
+    @property
+    def _replyto_address(self):
+        name, mail = self.replyto_address
+        return self._prepare_address(name, mail, self.encoding)
 
     @property
     def language(self):
@@ -161,7 +166,7 @@ class HTMLComposer(persistent.Persistent):
         vars['to_addr'] = self._to_addresses
         headers = vars['more_headers'] = {}
         if self.replyto_address:
-            headers['Reply-To'] = self.replyto_address
+            headers['Reply-To'] = self._replyto_address
 
         # It'd be nice if we could use an adapter here to override
         # variables.  We'd probably want to pass 'items' along to that
