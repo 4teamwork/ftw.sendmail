@@ -7,8 +7,8 @@ maintainer = 'Victor Baumann'
 setup(name='ftw.sendmail',
       version=version,
       description="Maintainer: %s" % maintainer,
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=open("README.txt").read() + "\n" + \
+          open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
@@ -25,18 +25,13 @@ setup(name='ftw.sendmail',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'setuptools',
-          'stoneagehtml',
-          # -*- Extra requirements: -*-
-      ],
+        'setuptools',
+        'stoneagehtml',
+        # -*- Extra requirements: -*-
+        ],
       entry_points="""
       # -*- Entry points: -*-
-
-      [distutils.setup_keywords]
-      paster_plugins = setuptools.dist:assert_string_list
-
-      [egg_info.writers]
-      paster_plugins.txt = setuptools.command.egg_info:write_arg
+      [z3c.autoinclude.plugin]
+      target = ftw
       """,
-      paster_plugins = ["ZopeSkel"],
       )
