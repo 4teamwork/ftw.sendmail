@@ -5,6 +5,9 @@ Changelog
 0.2
 ---
 
+* python2.6 compatible release
+  [20.07.2010, jbaumann]
+
 * Egg cleanup
   [01.02.2010, jbaumann]
   
