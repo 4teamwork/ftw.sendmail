@@ -4,7 +4,8 @@ Changelog
 
 0.3
 ---
-
+* Plone 4 Mailhost compatibility. 
+  [22.02.2011, mathias.leimgruber]
 
 0.2
 ---

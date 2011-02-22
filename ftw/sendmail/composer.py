@@ -17,8 +17,6 @@ from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 
 import Products.CMFPlone.interfaces
 
-from plone.memoize import volatile
-
 from interfaces import IEMailComposer
 
 _ = lambda x: x
@@ -220,8 +218,8 @@ class SMTPMailer(zope.sendmail.mailer.SMTPMailer):
         m = root.MailHost
         return dict(hostname=m.smtp_host or 'localhost',
                     port=m.smtp_port,
-                    username=m.smtp_userid or m.smtp_uid or None,
-                    password=m.smtp_pass or m.smtp_pwd or None,)
+                    username=getattr(m, 'smtp_userid', None) or m.smtp_uid or None,
+                    password=getattr(m, 'smtp_pass', None) or m.smtp_pwd or None,)
 
     def update_settings(self):
         self.__dict__.update(self._fetch_settings())
