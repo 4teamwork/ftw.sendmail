@@ -5,10 +5,13 @@ Changelog
 0.4
 ---
 
+* #1092 Benachrichtigung - Termineinladungen inkl. Import in Outlook
+  Attachments können per Mail versendet werden
+  [28.02.2011, elio.schmutz]
 
 0.3
 ---
-* Plone 4 Mailhost compatibility. 
+* Plone 4 Mailhost compatibility.
   [22.02.2011, mathias.leimgruber]
 
 0.2
@@ -19,7 +22,7 @@ Changelog
 
 * Egg cleanup
   [01.02.2010, jbaumann]
-  
+
 
 0.1
 ---
