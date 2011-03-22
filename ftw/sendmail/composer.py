@@ -73,7 +73,14 @@ def create_html_mail(subject, html, text=None, from_addr=None, to_addr=None,
             msg[key] = value
     msg.preamble = 'This is a multi-part message in MIME format.'
 
-    #add the attachment
+
+
+    alternatives = MIMEMultipart('alternative')
+    msg.attach(alternatives)
+    alternatives.attach( MIMEText(text, 'plain', _charset=encoding) )
+    alternatives.attach( MIMEText(html, 'html',  _charset=encoding) )
+
+    #add the attachments
     for f, name, mimetype in attachments:
           if mimetype is None:
               mimetype = ('application', 'octet-stream')
@@ -87,11 +94,6 @@ def create_html_mail(subject, html, text=None, from_addr=None, to_addr=None,
               Encoders.encode_base64(part)
           part.add_header('Content-Disposition', 'attachment; filename="%s"' % name)
           msg.attach(part)
-
-    alternatives = MIMEMultipart('alternative')
-    msg.attach(alternatives)
-    alternatives.attach( MIMEText(text, 'plain', _charset=encoding) )
-    alternatives.attach( MIMEText(html, 'html',  _charset=encoding) )
 
     return msg
 
