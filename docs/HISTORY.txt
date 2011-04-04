@@ -6,7 +6,7 @@ Changelog
 ---
 
 * #1092 Benachrichtigung - Termineinladungen inkl. Import in Outlook
-  Attachments können per Mail versendet werden
+  Attachments koennen per Mail versendet werden
   [28.02.2011, elio.schmutz]
 
 0.3
