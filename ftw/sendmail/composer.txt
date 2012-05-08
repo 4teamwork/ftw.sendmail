@@ -1,22 +1,20 @@
-HTMLComposer
-------------
-
 The ``HTMLComposer`` creates messages of type ``email.Message.Message``.
 
   >>> from ftw.sendmail.composer import HTMLComposer
   >>> composer = HTMLComposer('Message Body', 'Subject',
   ...                         [('Victor Bäümänn','v.baumann@4teamwork.ch'),
-  ...                         ('Mathias Leimgruber','m.leimgruber@4teamwork.ch')])
+  ...                         ('Mathias Leimgruber','m.leimgruber@4teamwork.ch')],
+  ...                          from_name='Some User', from_address="some@address.com")
 
 Addresses will be decoded and formated for sending:
 
   >>> composer._to_addresses
-  '=?utf-8?b?VmljdG9yIELDpMO8bcOkbm4=?= <v.baumann@4teamwork.ch>, Mathias Leimgruber <m.leimgruber@4teamwork.ch>'
+  '=?utf-8?q?Victor_B=C3=A4=C3=BCm=C3=A4nn?= <v.baumann@4teamwork.ch>, Mathias Leimgruber <m.leimgruber@4teamwork.ch>'
 
-If no from_address is passed HTMLComposer uses the Address from the site_properties:
+Check from address:
 
   >>> composer._from_address
-  'Site Administrator <>'
+  'Some User <some@address.com>'
 
 Check if converting to html and overriding of variables works:
 
@@ -32,7 +30,7 @@ Check if converting to html and overriding of variables works:
 create the message object:
 
   >>> composer.render()
-  <email.MIMEMultipart.MIMEMultipart instance ...>
+  <email.mime.multipart.MIMEMultipart instance ...>
 
 IMailer
 -------

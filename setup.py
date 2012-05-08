@@ -4,6 +4,12 @@ import os
 version = '0.5.dev0'
 maintainer = 'Mathias Leimgruber'
 
+
+tests_require = [
+    'zope.testing',
+    'Products.PloneTestCase',
+    ]
+
 setup(name='ftw.sendmail',
       version=version,
       description="Maintainer: %s" % maintainer,
@@ -31,6 +37,9 @@ setup(name='ftw.sendmail',
         'BeautifulSoup'
         # -*- Extra requirements: -*-
         ],
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
+
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
