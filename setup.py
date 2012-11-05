@@ -7,6 +7,7 @@ version = '0.5.dev0'
 tests_require = [
     'zope.testing',
     'Products.PloneTestCase',
+    'Zope2',
     ]
 
 
@@ -38,8 +39,12 @@ setup(name='ftw.sendmail',
       install_requires=[
         'setuptools',
         'stoneagehtml',
-        'BeautifulSoup'
-        # -*- Extra requirements: -*-
+        'Products.CMFPlone',
+        'ZODB3',
+        'zope.app.pagetemplate',
+        'zope.component',
+        'zope.interface',
+        'zope.sendmail',
         ],
 
       tests_require=tests_require,
