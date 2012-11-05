@@ -19,7 +19,7 @@ from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 
 import Products.CMFPlone.interfaces
 
-from interfaces import IEMailComposer
+from ftw.sendmail.interfaces import IEMailComposer
 
 _ = lambda x: x
 
