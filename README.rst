@@ -1,8 +1,7 @@
 Introduction
 ============
 
-With ``ftw.sendmail`` you are able to dynamically add tooltips to every DOM
-element, which is selectable by jQuery and allows the title attribute.
+Provides helpers for sending multipart emails.
 
 
 Installing
