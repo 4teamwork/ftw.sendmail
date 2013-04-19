@@ -35,3 +35,7 @@ Copyright
 This package is copyright by `4teamwork <http://www.4teamwork.ch/>`_.
 
 ``ftw.sendmail`` is licensed under GNU General Public License, version 2.
+
+.. image:: https://cruel-carlota.pagodabox.com/d74d8d735c615159ba6c7cb76f649154
+   :alt: githalytics.com
+   :target: http://githalytics.com/4teamwork/ftw.sendmail
