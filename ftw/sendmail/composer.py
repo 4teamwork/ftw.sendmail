@@ -15,7 +15,7 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email.Utils import formatdate
-from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 import Products.CMFPlone.interfaces
 
@@ -128,7 +128,7 @@ class HTMLComposer(persistent.Persistent):
     context = None
     @property
     def request(self):
-        site = zope.app.component.hooks.getSite()
+        site = zope.component.hooks.getSite()
         return site.REQUEST
 
     def _prepare_address(self, name, mail, charset):
@@ -171,8 +171,12 @@ class HTMLComposer(persistent.Persistent):
         #site = utils.fix_request(site, 0)
         fix_urls = lambda t: t #lambda t: transform.URL(site).__call__(t, subscription)
 
+        site_title = site.Title()
+        if type(site_title) != unicode:
+            site_title = unicode(site.Title(), 'UTF-8')
+
         vars['site_url'] = site.absolute_url()
-        vars['site_title'] = unicode(site.Title(), 'UTF-8')
+        vars['site_title'] = site_title
         vars['subject'] = self.subject
         vars['message'] = self.message
         # Why would header_text or footer_text ever be None?
