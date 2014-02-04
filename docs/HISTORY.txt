@@ -5,7 +5,8 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- Nothing chaned yet
+- Plone 4.3 compatibility
+  [mathias.leimgruber]
 
 
 0.4 (2011-03-12)
