@@ -23,9 +23,9 @@ Usage
 Links
 =====
 
-- Main github project repository: https://github.com/4teamwork/ftw.sendmail
-- Issue tracker: https://github.com/4teamwork/ftw.sendmail/issues
-- Package on pypi: http://pypi.python.org/pypi/ftw.sendmail
+- Github: https://github.com/4teamwork/ftw.sendmail
+- Issues: https://github.com/4teamwork/ftw.sendmail/issues
+- Pypi: http://pypi.python.org/pypi/ftw.sendmail
 - Continuous integration: https://jenkins.4teamwork.ch/search?q=ftw.sendmail
 
 
