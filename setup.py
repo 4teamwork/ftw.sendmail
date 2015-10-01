@@ -40,6 +40,7 @@ setup(name='ftw.sendmail',
       zip_safe=False,
 
       install_requires=[
+        'Plone',
         'setuptools',
         'stoneagehtml',
         'Products.CMFPlone',
